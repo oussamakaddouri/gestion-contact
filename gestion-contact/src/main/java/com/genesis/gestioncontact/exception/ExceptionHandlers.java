@@ -14,6 +14,12 @@ public class ExceptionHandlers {
 	        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	    }	
 	    
+	    @ExceptionHandler(ResourceNotFoundException.class)
+	    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException e) {
+	        ErrorResponse error = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+	        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+	    }
+	    
 	   }
 
 
